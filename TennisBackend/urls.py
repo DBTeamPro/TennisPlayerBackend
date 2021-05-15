@@ -4,4 +4,5 @@ from django.urls import include, path
 urlpatterns = [
     path('init/', include('load_api.urls')),
     path('match/', include('match_api.urls')),
+    path('player/', include('player_api.urls')),
 ]
