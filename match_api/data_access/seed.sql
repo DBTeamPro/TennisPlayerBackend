@@ -1,12 +1,17 @@
 SELECT M_TB.tourney_name,
-	    SUM(CASE
+	    ROUND(
+        CAST(
+        SUM(CASE
 	   		 WHEN M_TB.winner_seed = 0 AND M_TB.loser_seed > 0
-	   		 THEN 1 ELSE 0 END)/
+	   		 THEN 1 ELSE 0 END) AS FLOAT)/
+	    CAST((SUM(CASE
+	   		 WHEN (M_TB.winner_seed = 0 AND M_TB.loser_seed > 0)
+	   		 THEN 1 ELSE 0 END)+
 	    SUM(CASE
-	   		 WHEN (M_TB.winner_seed = 0 AND M_TB.loser_seed > 0)OR
-	   			  (M_TB.loser_seed = 0 AND M_TB.winner_seed > 0)
-	   		 THEN 1 ELSE 0 END) AS unseed_defeat_seed,
+	   		 WHEN (M_TB.loser_seed = 0 AND M_TB.winner_seed > 0)
+	   		 THEN 1 ELSE 0 END)) AS FLOAT), 2) AS unseed_defeat_seed,
 
+        ROUND(
 	   	(SUM(CASE
 	   		WHEN M_TB.winner_seed = 0
 	   		THEN M_TB.winner_rank ELSE 0 END)+
@@ -18,7 +23,8 @@ SELECT M_TB.tourney_name,
 	   		THEN 1 ELSE 0 END)+
 	   	SUM(CASE
 	   		WHEN M_TB.loser_seed = 0
-	   		THEN 1 ELSE 0 END)) AS avg_unseed_rank
+	   		THEN 1 ELSE 0 END)), 2) AS avg_unseed_rank
+
 FROM 
 	(SELECT tourney_name, winner_rank, loser_rank, winner_seed, loser_seed
 	FROM Match2015
