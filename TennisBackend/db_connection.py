@@ -1,5 +1,6 @@
 import pyodbc
 from config import config
+import json
 
 
 def azure_connect(command_line):
@@ -11,4 +12,9 @@ def azure_connect(command_line):
                 ';PWD='+ config["password"]
                 ) as conn:
         with conn.cursor() as cursor:
-            cursor.execute(command_line)
+            rows = cursor.execute(command_line).fetchall()
+            for row in rows:
+                for x in row:
+                    temp = x
+
+            return json.loads(temp)
