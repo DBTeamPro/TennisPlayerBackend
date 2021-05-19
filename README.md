@@ -7,3 +7,4 @@
 5. terminal key in `source activate`, check if there is (env) in front of username
 6. terminal key in `pip install -r requirement.txt`
 7. terminal key in `python manage.py runserver 8080`
+8. done
