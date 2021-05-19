@@ -5,6 +5,7 @@ bcp==0.4.0
 bcpy==0.1.8
 distlib==0.3.1
 Django==3.2
+django-cors-headers==3.7.0
 djangorestframework==3.12.4
 filelock==3.0.12
 isort==5.5.4
