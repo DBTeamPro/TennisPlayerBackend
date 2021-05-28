@@ -17,8 +17,8 @@ def get_seed_analysis(request):
     seed_result = azure_connect(line)
     return JsonResponse(seed_result, status=status.HTTP_200_OK, safe=False)
 
-def get_goal_analysis(request):
-    file = open("match_api/data_access/goal.sql")
+def get_point_analysis(request):
+    file = open("match_api/data_access/point.sql")
     line = file.read().replace("\n", " ")
     goal_result = azure_connect(line)
     return JsonResponse(goal_result, status=status.HTTP_200_OK, safe=False)
