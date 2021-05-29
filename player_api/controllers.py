@@ -22,3 +22,9 @@ def get_hand_analysis(request):
     line = file.read().replace("\n", " ")
     hand_result = azure_connect(line)
     return JsonResponse(hand_result, status=status.HTTP_200_OK, safe=False)
+
+def get_big3_analysis(request):
+    file = open("player_api/data_access/big3.sql")
+    line = file.read().replace("\n", " ")
+    big3_result = azure_connect(line)
+    return JsonResponse(big3_result, status=status.HTTP_200_OK, safe=False)
