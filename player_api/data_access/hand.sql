@@ -1,4 +1,4 @@
-SELECT *
+SELECT ONE.level AS level, ONE.rate_of_left_hand AS rate_of_left_hand, TWO.win_rate AS win_rate, TWO.avg_rank AS avg_rank
 FROM	
 	(SELECT SUBSTRING('G', 1, 1) AS level,
 
@@ -117,7 +117,7 @@ FROM
 		FROM Match2011
 		WHERE tourney_level = 'G') AS M_TB) AS TWO
 UNION
-SELECT *
+SELECT ONE.level AS level, ONE.rate_of_left_hand AS rate_of_left_hand, TWO.win_rate AS win_rate, TWO.avg_rank AS avg_rank
 FROM	
 	(SELECT SUBSTRING('A', 1, 1) AS level,
 
@@ -236,7 +236,7 @@ FROM
 		FROM Match2011
 		WHERE tourney_level = 'A') AS M_TB) AS TWO
 UNION
-SELECT *
+SELECT ONE.level AS level, ONE.rate_of_left_hand AS rate_of_left_hand, TWO.win_rate AS win_rate, TWO.avg_rank AS avg_rank
 FROM	
 	(SELECT SUBSTRING('M', 1, 1) AS level,
 
@@ -356,4 +356,4 @@ FROM
 		FROM Match2011
 		WHERE tourney_level = 'M') AS M_TB) AS TWO
 ORDER BY level
-FOR JSON AUTO;
+FOR JSON PATH;

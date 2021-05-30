@@ -242,4 +242,4 @@ FROM
 				WHEN loser_age > 30 AND loser_rank < 100
 				THEN 1 ELSE 0 END)) AS FLOAT), 2) AS avg_rank
 	FROM Match2015) AS M_TB
-    FOR JSON AUTO;
+    FOR JSON PATH;
