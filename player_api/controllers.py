@@ -28,3 +28,10 @@ def get_big3_analysis(request):
     line = file.read().replace("\n", " ")
     big3_result = azure_connect(line)
     return JsonResponse(big3_result, status=status.HTTP_200_OK, safe=False)
+
+def get_height_analysis(request):
+    file = open("player_api/data_access/height.sql")
+    line = file.read().replace("\n", " ")
+    print(line)
+    height_result = azure_connect(line)
+    return JsonResponse(height_result, status=status.HTTP_200_OK, safe=False)
