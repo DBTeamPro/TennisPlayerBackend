@@ -7,4 +7,5 @@ urlpatterns = [
     path('match_time', controllers.get_match_time_analysis),
     path('hand', controllers.get_hand_analysis),
     path('big3', controllers.get_big3_analysis),
+    path('height', controllers.get_height_analysis),
 ]
