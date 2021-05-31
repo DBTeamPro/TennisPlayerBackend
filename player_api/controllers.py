@@ -1,5 +1,4 @@
 from os import stat
-import pyodbc
 from django.http.response import JsonResponse
 from rest_framework import status
 from TennisBackend.db_connection import azure_connect
