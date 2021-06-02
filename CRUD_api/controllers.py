@@ -72,7 +72,6 @@ def create_match(request):
 
     # contact
     line = insert + match + col_name + values + parameter
-    print(line)
     azure_exe(line)
 
     return JsonResponse({"message": "Match created!"}, status=status.HTTP_201_CREATED)
@@ -104,7 +103,6 @@ def update_match(request, id):
 
     # contact
     line = update + match + parameter + condition
-    print(line)
     azure_exe(line)
     return JsonResponse({"message": "Update successful!"}, status=status.HTTP_200_OK, safe=False)
 
