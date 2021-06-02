@@ -38,3 +38,28 @@ def search_player(request):
 
     search_matches_result = azure_parse_gotten_data(line)
     return JsonResponse(search_matches_result, status=status.HTTP_200_OK, safe=False)
+
+def insert_match(request):
+    # given json
+    dic = {'winner_id' : 1, 'winner_seed' : 2, 'winner_entry' : 3}
+    match = 'Match2011' + ' '
+
+    # string manipulate
+    col_name = '('
+    parameter = '('
+    for i in dic.keys():
+        if i == list(dic.keys())[-1]:
+            col_name += (i + ') ')
+            parameter += (str(dic[i]) + ');')
+        else:
+            col_name += (i + ', ')
+            parameter += (str(dic[i]) + ', ')
+
+    # syntax
+    insert = 'INSERT INTO '
+    values = 'VALUES ' 
+
+    # contact
+    ans = insert + match + col_name + values + parameter
+
+    print(ans)
